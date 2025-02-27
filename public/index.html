@@ -4,6 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RCON-Web</title>
+  
+  <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
@@ -50,7 +55,7 @@
       <div id="consoleOutput" class="console-output"></div>
 
       <div class="input-container">
-        <input type="text" id="commandInput" placeholder="Enter command..." disabled>
+        <input type="text" id="commandInput" placeholder="Enter command..." autocapitalize="off" autocorrect="off" disabled>
         <button id="sendBtn" class="send-btn" disabled>
           <i class="fas fa-paper-plane"></i>
         </button>
@@ -60,5 +65,17 @@
 
   <script src="/socket.io/socket.io.js"></script>
   <script src="js/main.js"></script>
+  <!-- Register Service Worker -->
+  <!-- <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then(registration => {
+          console.log('Service Worker registered with scope:', registration.scope);
+        })
+        .catch(err => {
+          console.log('Service Worker registration failed:', err);
+        });
+    }
+  </script> -->
 </body>
 </html>

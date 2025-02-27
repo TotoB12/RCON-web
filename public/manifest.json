@@ -1,0 +1,11 @@
+{
+    "name": "RCON-Web",
+    "short_name": "RCON-Web",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#f9f9f9",
+    "theme_color": "#2c3e50",
+    "description": "A simple web interface for connecting to RCON servers",
+    "icons": []
+  }
+  
