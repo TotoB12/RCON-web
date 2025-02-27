@@ -1,0 +1,277 @@
+/* public/css/style.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --background-color: #f9f9f9;
+    --console-background: #2c3e50;
+    --console-text: #ecf0f1;
+    --input-background: #34495e;
+    --btn-hover: #2980b9;
+    --error-color: #e74c3c;
+    --success-color: #2ecc71;
+    --border-radius: 4px;
+    --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    background-color: var(--background-color);
+    height: 100vh;
+    margin: 0;
+    /* Removed centering so the app can fill the screen */
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    /* Removing border radius and box shadow for a full screen layout */
+    /* border-radius: var(--border-radius); */
+    /* box-shadow: var(--box-shadow); */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header Styles */
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.settings-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.settings-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Connection Status */
+.connection-status {
+    background-color: #f1f1f1;
+    padding: 8px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.status-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.offline {
+    background-color: var(--error-color);
+}
+
+.online {
+    background-color: var(--success-color);
+}
+
+.status-text {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* Settings Panel */
+.settings-panel {
+    background-color: white;
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.hidden {
+    display: none;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #444;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-size: 0.9rem;
+}
+
+.settings-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.primary-btn, .secondary-btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.primary-btn {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.primary-btn:hover {
+    background-color: var(--btn-hover);
+}
+
+.secondary-btn {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+.secondary-btn:hover {
+    background-color: #d0d0d0;
+}
+
+/* Console Container and Output */
+.console-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.console-output {
+    flex: 1;
+    background-color: var(--console-background);
+    color: var(--console-text);
+    padding: 20px;
+    overflow-y: auto;
+    font-family: monospace;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* Message Styles */
+.command-entry {
+    margin-bottom: 15px;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.command-prompt {
+    color: var(--secondary-color);
+    font-weight: bold;
+}
+
+.command-text {
+    color: #f39c12;
+}
+
+.response-text {
+    margin-bottom: 15px;
+    color: var(--console-text);
+}
+
+.error-text {
+    color: var(--error-color);
+}
+
+.system-message {
+    color: #95a5a6;
+    font-style: italic;
+}
+
+/* Input Container */
+.input-container {
+    display: flex;
+    background-color: var(--input-background);
+    padding: 10px;
+}
+
+#commandInput {
+    flex: 1;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    border-radius: var(--border-radius);
+    font-family: monospace;
+}
+
+#commandInput::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+#commandInput:focus {
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.send-btn {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    margin-left: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.send-btn:hover {
+    background-color: var(--btn-hover);
+}
+
+.send-btn:disabled, #commandInput:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.2rem;
+    }
+    
+    .settings-panel {
+        padding: 15px;
+    }
+}

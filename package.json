@@ -1,0 +1,30 @@
+{
+    "name": "rcon-web",
+    "version": "1.0.0",
+    "description": "A simple web interface for connecting to RCON servers",
+    "main": "server/server.js",
+    "scripts": {
+        "start": "node server/server.js",
+        "dev": "nodemon server/server.js"
+    },
+    "keywords": [
+        "rcon",
+        "web",
+        "gaming",
+        "server",
+        "admin"
+    ],
+    "author": "",
+    "license": "MIT",
+    "dependencies": {
+        "express": "^4.17.1",
+        "rcon-client": "^4.2.5",
+        "socket.io": "^4.4.1"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.15"
+    },
+    "engines": {
+        "node": ">=14.0.0"
+    }
+}
