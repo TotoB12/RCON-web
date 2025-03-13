@@ -16,26 +16,26 @@ app.use(express.static(path.join(__dirname, '../public')));
 // Socket.io connection handler
 io.on('connection', (socket) => {
   console.log('New client connected');
-  
+
   // Create a new RCON client for this connection
   const rconClient = new RconClient();
-  
+
   // Handle connect request
   socket.on('connect-rcon', async (config) => {
     try {
       await rconClient.connect(config.ip, config.port, config.password);
-      socket.emit('connection-status', { 
-        connected: true, 
-        message: 'Connected to RCON server successfully' 
+      socket.emit('connection-status', {
+        connected: true,
+        message: 'Connected to RCON server successfully'
       });
     } catch (error) {
-      socket.emit('connection-status', { 
-        connected: false, 
-        message: `Connection failed: ${error.message}` 
+      socket.emit('connection-status', {
+        connected: false,
+        message: `Connection failed: ${error.message}`
       });
     }
   });
-  
+
   // Handle command request
   socket.on('send-command', async (command) => {
     try {
@@ -53,24 +53,28 @@ io.on('connection', (socket) => {
       });
     }
   });
-  
+
   // Handle disconnect request
   socket.on('disconnect-rcon', async () => {
     try {
       await rconClient.disconnect();
-      socket.emit('connection-status', { 
-        connected: false, 
-        message: 'Disconnected from RCON server' 
+      socket.emit('connection-status', {
+        connected: false,
+        message: 'Disconnected from RCON server'
       });
     } catch (error) {
-      // Optionally log or handle the error
+      console.error('Error disconnecting RCON:', error.message);
     }
   });
-  
+
   // Handle client disconnect
   socket.on('disconnect', async () => {
     console.log('Client disconnected');
-    await rconClient.disconnect();
+    try {
+      await rconClient.disconnect();
+    } catch (error) {
+      console.error('Error disconnecting RCON:', error.message);
+    }
   });
 });
 
